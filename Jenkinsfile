@@ -49,7 +49,7 @@ pipeline {
                 echo 'Archiving Artifacts...'
                 archiveArtifacts artifacts: '**/build/libs/*.jar, **/build/docs/**', fingerprint: true
             }
-        }
+
 
 
 }
