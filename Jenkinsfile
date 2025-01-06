@@ -2,16 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
-            steps {
-                echo 'Running Unit Tests...'
-                sh './gradlew test' // Run unit tests
-                junit '**/build/test-results/test/*.xml' // Archive test results
-                echo 'Generating Cucumber Reports...'
-                // Example: Adjust the path based on your setup
-                cucumber fileIncludePattern: '**/cucumber-reports/*.json'
-            }
-        }
+         stage('Test') {
+                   steps {
+                       echo 'Running Unit Tests...'
+                       sh './gradlew test' // Run unit tests
+
+                       echo 'Generating Cucumber Reports...'
+                       publishHTML(target: [
+                           reportName: 'Cucumber Report',
+                           reportDir: 'build/reports/cucumber',
+                           reportFiles: 'report.json',
+                           keepAll: true,
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: true
+                       ])
+                   }
+               }
 
         stage('Code Analysis') {
             steps {
