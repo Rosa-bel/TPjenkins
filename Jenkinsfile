@@ -7,19 +7,23 @@ pipeline {
     }
     */
     stages {
-        stage('Test') {
-            steps {
-                // Run unit tests
-                bat './gradlew test'
+     stage('Test') {
+                steps {
+                    script {
 
-                // Archive test results
-                junit 'build/test-results/test/*.xml'
+                        bat './gradlew test'
 
-                // Generate Cucumber reports
-                cucumber jsonReportDirectory: 'build/reports/cucumber',
-                         buildStatus: true
+                    }
+                }
+                post {
+                    always {
+
+                        junit 'build/test-results/test/*.xml'
+
+                        cucumber 'reports/example-report.json'
+                    }
+                }
             }
-        }
 
         /*
         stage('Code Analysis') {
