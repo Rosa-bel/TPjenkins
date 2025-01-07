@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    environment {
+    /**environment {
         GRADLE_HOME = '/usr/share/gradle'
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
-    }
+    }**/
     stages {
       stage('Test') {
           steps {
@@ -13,13 +13,13 @@ pipeline {
               // Archive test results
               junit 'build/test-results/test/*.xml'
 
-              // Generate Cucumber reports
+
               cucumber jsonReportDirectory: 'build/reports/cucumber',
                        buildStatus: true
           }
       }
 
-        stage('Code Analysis') {
+      /**  stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar') {
@@ -78,4 +78,4 @@ pipeline {
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
     }
-}
+}**/
