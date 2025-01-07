@@ -8,7 +8,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run unit tests
-                sh './gradlew test'
+                bat './gradlew test'
 
                 // Archive test results
                 junit 'build/test-results/test/*.xml'
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar') {
-                    sh './gradlew sonar'
+                    bat './gradlew sonar'
                 }
             }
         }
@@ -38,10 +38,10 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the project and generate JAR
-                sh './gradlew build'
+                bat './gradlew build'
 
                 // Generate documentation
-                sh './gradlew javadoc'
+                bat './gradlew javadoc'
 
                 // Archive JAR and documentation
                 archiveArtifacts artifacts: 'build/libs/*.jar, build/docs/javadoc/**', allowEmptyArchive: true
@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Publish to Maven repository
-                sh './gradlew publish'
+                bat './gradlew publish'
             }
         }
     }
