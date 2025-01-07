@@ -1,25 +1,28 @@
 pipeline {
     agent any
-    /**environment {
+    /*
+    environment {
         GRADLE_HOME = '/usr/share/gradle'
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
-    }**/
+    }
+    */
     stages {
-      stage('Test') {
-          steps {
-              // Run unit tests
-              bat './gradlew test'
+        stage('Test') {
+            steps {
+                // Run unit tests
+                bat './gradlew test'
 
-              // Archive test results
-              junit 'build/test-results/test/*.xml'
+                // Archive test results
+                junit 'build/test-results/test/*.xml'
 
+                // Generate Cucumber reports
+                cucumber jsonReportDirectory: 'build/reports/cucumber',
+                         buildStatus: true
+            }
+        }
 
-              cucumber jsonReportDirectory: 'build/reports/cucumber',
-                       buildStatus: true
-          }
-      }
-
-      /**  stage('Code Analysis') {
+        /*
+        stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar') {
@@ -27,6 +30,7 @@ pipeline {
                 }
             }
         }
+
         stage('Quality Gates') {
             steps {
                 // Wait for quality gate result
@@ -35,6 +39,7 @@ pipeline {
                 }
             }
         }
+
         stage('Build') {
             steps {
                 // Build the project and generate JAR
@@ -47,13 +52,16 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar, build/docs/javadoc/**', allowEmptyArchive: true
             }
         }
+
         stage('Deploy') {
             steps {
                 // Publish to Maven repository
                 bat './gradlew publish'
             }
         }
+        */
     }
+    /*
     post {
         success {
             // Notify on Slack about successful deployment
@@ -77,5 +85,6 @@ pipeline {
                  subject: "Deployment Failed: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
-    }**/
+    }
+    */
 }
