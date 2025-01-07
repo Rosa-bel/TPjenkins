@@ -47,6 +47,15 @@ publishing {
     }
   }
 
+  sonarqube {
+    properties {
+      property "sonar.host.url", "http://<external-sonarqube-ip>:9000"
+      property "sonar.login", "your-sonarqube-token"
+      property "sonar.projectKey", "your-project-key"
+    }
+  }
+
+
   publications {
     maven(MavenPublication) {
       from components.java
