@@ -25,7 +25,7 @@ pipeline {
                 }
             }
 
-        /*
+
         stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-
+       /*
         stage('Quality Gates') {
             steps {
                 // Wait for quality gate result
