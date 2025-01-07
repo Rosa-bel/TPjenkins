@@ -47,11 +47,25 @@ publishing {
     }
   }
 
+  jacoco {
+    toolVersion = "0.8.12"
+    reportsDirectory = layout.buildDirectory.dir("reports/jacoco")
+  }
+
+  jacocoTestReport {
+    dependsOn test
+    reports {
+      xml.required = true
+      csv.required = false
+      html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+  }
   sonarqube {
     properties {
-      property "sonar.host.url", "http://<external-sonarqube-ip>:9000"
-      property "sonar.login", "your-sonarqube-token"
-      property "sonar.projectKey", "your-project-key"
+      property "sonar.host.url", "http://197.140.142.82:9000/"
+      property "sonar.login", "71871ef5906de87f59e804800bdfcc34cfb334dc"
+      property "sonar.sources", "src/main/java"
+      property "sonar.java.coveragePlugin", "jacoco"
     }
   }
 

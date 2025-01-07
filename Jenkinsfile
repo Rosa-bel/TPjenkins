@@ -5,11 +5,6 @@ pipeline {
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
     }
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Test') {
             steps {
                 // Run unit tests
@@ -24,10 +19,10 @@ pipeline {
                          noFlashCharts: true
             }
         }
-     /**   stage('Code Analysis') {
+        stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonar') {
                     sh './gradlew sonar'
                 }
             }
@@ -83,4 +78,4 @@ pipeline {
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
     }
-}**/
+}
