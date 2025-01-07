@@ -5,20 +5,20 @@ pipeline {
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
     }
     stages {
-        stage('Test') {
-            steps {
-                // Run unit tests
-                bat './gradlew test'
+      stage('Test') {
+          steps {
+              // Run unit tests
+              bat './gradlew test'
 
-                // Archive test results
-                junit 'build/test-results/test/*.xml'
+              // Archive test results
+              junit 'build/test-results/test/*.xml'
 
-                // Generate Cucumber reports
-                cucumber buildDir: 'build/reports/cucumber',
-                         jsonReportFiles: 'reports/example-report.json',
-                         noFlashCharts: true
-            }
-        }
+              // Generate Cucumber reports
+              cucumber jsonReportDirectory: 'build/reports/cucumber',
+                       buildStatus: true
+          }
+      }
+
         stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
