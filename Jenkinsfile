@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-       /*
+
         stage('Quality Gates') {
             steps {
                 // Wait for quality gate result
@@ -43,6 +43,8 @@ pipeline {
                 }
             }
         }
+
+        /*
 
         stage('Build') {
             steps {
