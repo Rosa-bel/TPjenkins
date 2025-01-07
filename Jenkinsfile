@@ -44,7 +44,7 @@ pipeline {
             }
         }
 
-        /*
+
 
         stage('Build') {
             steps {
@@ -58,7 +58,7 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar, build/docs/javadoc/**', allowEmptyArchive: true
             }
         }
-
+        /*
         stage('Deploy') {
             steps {
                 // Publish to Maven repository
