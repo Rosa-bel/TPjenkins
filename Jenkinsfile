@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-    /*
+
      stage('Test') {
                 steps {
                     script {
@@ -26,7 +26,7 @@ pipeline {
                 }
             }
 
-
+     /*
        stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
