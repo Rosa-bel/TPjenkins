@@ -51,10 +51,12 @@ pipeline {
             steps {
 
                 bat './gradlew build'
-
-
                 bat './gradlew javadoc'
-                archiveArtifacts artifacts: 'build/libs/*.jar, build/docs/javadoc/**', allowEmptyArchive: true
+                  post {
+                          success {
+                          archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+                           archiveArtifacts artifacts: 'build/docs/javadoc/**/*', fingerprint: true
+                                         }
             }
         }
 
@@ -75,11 +77,12 @@ pipeline {
                       message: "Build and deployment of ${env.JOB_NAME} - ${env.BUILD_NUMBER} succeeded!",
                       token: 'TNThHQevSAO0B1EPjYi6M7JE')
 
-
+           archiveArtifacts artifacts: 'build/**/*', fingerprint: true
             mail to: 'lr_belgacem@esi.dz',
                  subject: "Deployment Successful: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has been completed successfully."
         }
+
         failure {
 
             slackSend(channel: '#test',
