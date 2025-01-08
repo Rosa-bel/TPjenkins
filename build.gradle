@@ -81,6 +81,3 @@ publishing {
 
 
 
-/**test {
- useJUnitPlatform()
- }**/
