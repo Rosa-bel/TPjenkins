@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    /*
+
     environment {
         GRADLE_HOME = '/usr/share/gradle'
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
     }
-    */
+
     stages {
      stage('Test') {
                 steps {
@@ -71,9 +71,9 @@ pipeline {
     post {
         success {
             // Notify on Slack about successful deployment
-            slackSend(channel: '#deployments',
+            slackSend(channel: '#test',
                       message: "Build and deployment of ${env.JOB_NAME} - ${env.BUILD_NUMBER} succeeded!",
-                      webhookToken: 'your-slack-webhook-token')
+                      webhookToken: 'TNThHQevSAO0B1EPjYi6M7JE')
 
             // Send email notification
             mail to: 'lr_belgacem@esi.dz',
@@ -82,9 +82,9 @@ pipeline {
         }
         failure {
             // Notify on Slack about failure
-            slackSend(channel: '#deployments',
+            slackSend(channel: '#test',
                       message: "Build of ${env.JOB_NAME} - ${env.BUILD_NUMBER} failed!",
-                      webhookToken: 'your-slack-webhook-token')
+                      webhookToken: 'TNThHQevSAO0B1EPjYi6M7JE')
 
             // Send email notification
             mail to: 'lr_belgacem@esi.dz',
