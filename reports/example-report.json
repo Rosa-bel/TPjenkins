@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2995700,
+              "duration": 6998800,
               "status": "passed"
             },
             "line": 3,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2025-01-08T02:00:51.902Z",
+        "start_timestamp": "2025-01-08T04:00:31.006Z",
         "line": 5,
         "name": "Determinant",
         "description": "",
@@ -34,7 +34,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2000900,
+              "duration": 4999100,
               "status": "passed"
             },
             "line": 6,
@@ -76,7 +76,7 @@
           },
           {
             "result": {
-              "duration": 1999000,
+              "duration": 4000100,
               "status": "passed"
             },
             "line": 11,
@@ -115,7 +115,7 @@
         ]
       },
       {
-        "start_timestamp": "2025-01-08T02:00:52.008Z",
+        "start_timestamp": "2025-01-08T04:00:31.168Z",
         "line": 14,
         "name": "Transpose",
         "description": "",
@@ -162,7 +162,7 @@
           },
           {
             "result": {
-              "duration": 2005200,
+              "duration": 3372300,
               "status": "passed"
             },
             "line": 20,
@@ -218,7 +218,7 @@
         ]
       },
       {
-        "start_timestamp": "2025-01-08T02:00:52.013Z",
+        "start_timestamp": "2025-01-08T04:00:31.177Z",
         "line": 26,
         "name": "Inverse",
         "description": "",
@@ -311,7 +311,7 @@
         ]
       },
       {
-        "start_timestamp": "2025-01-08T02:00:52.018Z",
+        "start_timestamp": "2025-01-08T04:00:31.183Z",
         "line": 37,
         "name": "Cofactor",
         "description": "",
@@ -321,6 +321,7 @@
         "steps": [
           {
             "result": {
+              "duration": 1000500,
               "status": "passed"
             },
             "line": 38,
@@ -352,7 +353,6 @@
           },
           {
             "result": {
-              "duration": 999900,
               "status": "passed"
             },
             "line": 42,
