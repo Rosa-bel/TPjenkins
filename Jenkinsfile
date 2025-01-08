@@ -94,6 +94,7 @@ pipeline {
                  subject: "Deployment Failed: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
-        */
+
     }
+    */
 }
