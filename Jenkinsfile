@@ -5,8 +5,9 @@ pipeline {
         GRADLE_HOME = '/usr/share/gradle'
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
     }
-/*
+
     stages {
+    /*
      stage('Test') {
                 steps {
                     script {
@@ -94,7 +95,7 @@ pipeline {
                  subject: "Deployment Failed: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
-
+   */
     }
-    */
+
 }
