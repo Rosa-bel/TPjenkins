@@ -21,6 +21,20 @@ dependencies {
 
 }
 
+jacoco {
+  toolVersion = "0.8.12"
+  reportsDirectory = layout.buildDirectory.dir("reports/jacoco")
+}
+
+jacocoTestReport {
+  dependsOn test
+  reports {
+    xml.required = true
+    csv.required = false
+    html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+  }
+}
+
 
 
 cucumberReports {
@@ -29,19 +43,18 @@ cucumberReports {
   reports = files('reports/example-report.json')
 }
 
-test {
-  finalizedBy "jacocoTestReport" ,"sonar" // report is always generated after tests run
-}
-
 sonar {
   properties {
-    property "sonar.host.url", "http://localhost:9000/"
-    property "sonar.login", "29baf9aaad56d3703fd093ba3bb0aa35c42afc2c"
+    property "sonar.host.url", "http://197.140.142.82:9000/"
+    property "sonar.login", "01d7a9b957e2966709d479dc74ce8107b8e46fbe"
     property "sonar.sources", "src/main/java"
     property "sonar.java.coveragePlugin", "jacoco"
   }
 }
 
+test {
+  finalizedBy "jacocoTestReport" ,"sonar" // report is always generated after tests run
+}
 
 publishing {
 
@@ -61,77 +74,8 @@ publishing {
     }
   }
 }
-/*slack {
-  publishedPlugin {
-    webHook = "https://hooks.slack.com/services/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"
-
-    attachment {
-      fallback = "New version successfully published."
-      pretext = "New version successfully published."
-      color = "good"
-      field {
-        title = "Module"
-        value = project.name
-        shortValue = true
-      }
-      field {
-        title = "Version"
-        value = project.version
-        shortValue = true
-      }
-    }
-    attachment {
-      fallback = "Another line on sent together."
-      pretext = "Another line on sent together."
-      color = "good"
-      field {
-        title = "Something"
-        value = "Something text"
-      }
-    }
-  }
-  builtSucceed {
-    webHook = "https://hooks.slack.com/services/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"
-
-    attachment {
-      fallback = "Project successfully built."
-      pretext = "Project successfully built."
-      field {
-        title = "Module"
-        value = project.name
-        shortValue = true
-      }
-      field {
-        title = "Version"
-        value = project.version
-        shortValue = true
-      }
-    }
-  }
-}
-
-publish {
-  finalizedBy postBuiltSucceedToSlack
-}
 
 
-
-sendMail {
-  smtpServer {
-    host "smtp.gmail.com"
-    port 587
-    user "lr_belgacem@esi.dz"
-    password "ewzo mehw wmll kjvw"
-  }
-  mail {
-    from "lr_belgacem@esi.dz"
-    to "lr_belgacem@esi.dz" //
-    subject "Notification de déploiement"
-    attachments layout.projectDirectory.file("build.gradle"),
-            layout.projectDirectory.file("settings.gradle")
-    body "Bonjour,Le déploiement a été effectué avec succès. Vous trouverez les fichiers associés en pièce jointe.Cordialement."
-  }
-}
 
 
 
