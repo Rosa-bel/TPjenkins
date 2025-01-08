@@ -26,7 +26,7 @@ pipeline {
             }
 
 
-     /*   stage('Code Analysis') {
+       stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar') {
@@ -34,6 +34,8 @@ pipeline {
                 }
             }
         }
+
+        /*
 
         stage('Quality Gates') {
             steps {
