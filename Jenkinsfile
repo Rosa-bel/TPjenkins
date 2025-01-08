@@ -73,7 +73,7 @@ pipeline {
 
             slackSend(channel: '#test',
                       message: "Build and deployment of ${env.JOB_NAME} - ${env.BUILD_NUMBER} succeeded!",
-                      webhookToken: 'TNThHQevSAO0B1EPjYi6M7JE')
+                      token: 'TNThHQevSAO0B1EPjYi6M7JE')
 
 
             mail to: 'lr_belgacem@esi.dz',
@@ -84,7 +84,7 @@ pipeline {
 
             slackSend(channel: '#test',
                       message: "Build of ${env.JOB_NAME} - ${env.BUILD_NUMBER} failed!",
-                      webhookToken: 'TNThHQevSAO0B1EPjYi6M7JE')
+                      token: 'TNThHQevSAO0B1EPjYi6M7JE')
 
 
             mail to: 'lr_belgacem@esi.dz',
