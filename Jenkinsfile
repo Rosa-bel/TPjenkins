@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
+   /** environment {
         GRADLE_HOME = '/usr/share/gradle'
         PATH = "${GRADLE_HOME}/bin:${env.PATH}"
-    }
+    }**/
 
     stages {
 
