@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-   /** environment {
-        GRADLE_HOME = '/usr/share/gradle'
-        PATH = "${GRADLE_HOME}/bin:${env.PATH}"
-    }**/
 
     stages {
 
@@ -77,7 +73,7 @@ pipeline {
                       message: "Build and deployment of ${env.JOB_NAME} - ${env.BUILD_NUMBER} succeeded!",
                       token: 'TNThHQevSAO0B1EPjYi6M7JE')
 
-           archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+            archiveArtifacts artifacts: 'build/**/*', fingerprint: true
             mail to: 'lr_belgacem@esi.dz',
                  subject: "Deployment Successful: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has been completed successfully."
