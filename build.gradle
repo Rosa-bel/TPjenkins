@@ -33,6 +33,16 @@ test {
   finalizedBy "jacocoTestReport" ,"sonar" // report is always generated after tests run
 }
 
+sonar {
+  properties {
+    property "sonar.host.url", "http://localhost:9000/"
+    property "sonar.login", "29baf9aaad56d3703fd093ba3bb0aa35c42afc2c"
+    property "sonar.sources", "src/main/java"
+    property "sonar.java.coveragePlugin", "jacoco"
+  }
+}
+
+
 publishing {
 
   repositories {
