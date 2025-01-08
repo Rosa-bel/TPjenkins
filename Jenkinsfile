@@ -66,8 +66,15 @@ pipeline {
             }
         }
 
- stage("Notify") {
+
+}
+
+ post {
         success {
+            // Notify on Slack about successful deployment
+            slackSend(channel: '#test',
+                      message: "Build and deployment of ${env.JOB_NAME} - ${env.BUILD_NUMBER} succeeded!",
+                      webhookToken: 'TNThHQevSAO0B1EPjYi6M7JE')
 
             // Send email notification
             mail to: 'lr_belgacem@esi.dz',
@@ -85,10 +92,5 @@ pipeline {
                  subject: "Deployment Failed: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
-
     }
-
-}
-
-
 }
