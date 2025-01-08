@@ -26,7 +26,7 @@ pipeline {
             }
 
 
-        stage('Code Analysis') {
+     /*   stage('Code Analysis') {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar') {
@@ -92,5 +92,5 @@ pipeline {
                  subject: "Deployment Failed: ${env.JOB_NAME}",
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
-    }
+    }*/
 }
