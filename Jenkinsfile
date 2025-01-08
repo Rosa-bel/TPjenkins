@@ -58,16 +58,16 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar, build/docs/javadoc/**', allowEmptyArchive: true
             }
         }
-        /*
+
         stage('Deploy') {
             steps {
                 // Publish to Maven repository
                 bat './gradlew publish'
             }
         }
-        */
 
-    /*
+
+
     post {
         success {
             // Notify on Slack about successful deployment
@@ -92,6 +92,6 @@ pipeline {
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
     }
-    */
+
 }
 }
