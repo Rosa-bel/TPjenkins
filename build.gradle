@@ -3,7 +3,7 @@ plugins {
   id 'jacoco'
   id 'java'
   id("com.github.spacialcircumstances.gradle-cucumber-reporting") version "0.1.25"
-  id "org.sonarqube" version "4.3.1.3277" // Compatible with Java 1
+  id("org.sonarqube") version "4.4.0.3356"
   id 'maven-publish'
   //id("io.github.oleksiiparf.slack-webhook") version "1.0.0"
   //id("de.zebrajaeger.sendMail") version "0.2.2"
