@@ -68,7 +68,11 @@ pipeline {
 
 
 
-    post {
+
+
+}
+
+ post {
         success {
             // Notify on Slack about successful deployment
             slackSend(channel: '#test',
@@ -92,6 +96,4 @@ pipeline {
                  body: "The deployment for build ${env.BUILD_NUMBER} has failed. Please check the Jenkins logs for details."
         }
     }
-
-}
 }
